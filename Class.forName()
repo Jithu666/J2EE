@@ -63,7 +63,3 @@ will be done internally by the static block of the Class.forName will automatica
 Class.forName() is a very powerful method in Java API's which can ask JVM to load the given class dynamically in run-time.
 
 Along with Java 6, JDBC version 4 is also released, in which we do not require to write Class.forName() also, it will automatically be loaded by the driverManager class.
-
-
-
-
