@@ -18,12 +18,12 @@ Every DriverManager is identified with its driver class name.
 Type 1 JDBC driver s/w registration.
 
 type 1 JDBC driver name
-sun.jdbc.odbc.jdbcodbcdriver
+sun.jdbc.odbc.JdbcOdbcdriver
 
 how to create object for type 1 driver class
 
-take this class sun.jdbc.odbc.jdbcodbcdriver
-and create object for this class sun.jdbc.odbc.jdbcodbcdriver
+take this class sun.jdbc.odbc.JdbcOdbcdriver
+and create object for this class sun.jdbc.odbc.JdbcOdbcdriver
  and register the object with driver manager service.
 
 driver manager class has a method called register driver this is used to register the driver software.
@@ -38,4 +38,32 @@ Class.forName("sun.jdbc.odbc.JdbcOdbcdriver")
 Class.forName asks the JVM to load the given driverManager class.
 
 Class.forName method never creates an object for the driver class.
+
+Class.forName takes the driver class as input,
+makes JVM to load the class.
+
+in this process
+    "static block of the driver class executes"
+    static block of every JDBC driver class contains two lines of code.
+
+    1. Creating object for Driver class.
+    2. Another one is registering driver with driverManger service by calling driverManager.registerDriver() method.
+
+however Class.forName does not create or register driver software with driverManager class.
+
+Class.forName makes the JVM to load the driver class, in this process Static block of the driver class executes
+
+static block of the driver class contains the code to
+1. create object for JDBC Driver class and
+2. register JDBC driver with driverManager service
+
+will be done internally by the static block of the Class.forName will automatically register the driver software with driverManager.
+
+
+Class.forName() is a very powerful method in Java API's which can ask JVM to load the given class dynamically in run-time.
+
+Along with Java 6, JDBC version 4 is also released, in which we do not require to write Class.forName() also, it will automatically be loaded by the driverManager class.
+
+
+
 
