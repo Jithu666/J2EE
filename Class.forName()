@@ -33,7 +33,7 @@ DriverManager.registerDriver(driver);
 
 // Alternate
 
-Class.forName("sun.jdbc.odbc.JdbcOdbcdriver")
+Class.forName("sun.jdbc.odbc.JdbcOdbcdriver") 
 
 Class.forName asks the JVM to load the given driverManager class.
 
