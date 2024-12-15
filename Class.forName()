@@ -1,0 +1,41 @@
+How Class.forName(-) method registers JDBC Driver software with DriverManger Service?
+
+what is DriverManager service ?
+
+It is a built-in service in our Java Application, having capability to maintain a set of JDBC software drivers.
+
+How can we ask the DriverManager service to maintain a set of JDBC software drivers?
+
+Take a JDBC driver class and create object for that JDBC object class and keep the object in the DriverManager service it will automatically manage the JDBC driver software drivers.
+
+to register any DriverManager Service with driver software :
+
+we take a JDBC driver class and create a object for the JDBC driver and keep the object in DriverManager service.
+
+Every DriverManager is identified with its driver class name.
+
+
+Type 1 JDBC driver s/w registration.
+
+type 1 JDBC driver name
+sun.jdbc.odbc.jdbcodbcdriver
+
+how to create object for type 1 driver class
+
+take this class sun.jdbc.odbc.jdbcodbcdriver
+and create object for this class sun.jdbc.odbc.jdbcodbcdriver
+ and register the object with driver manager service.
+
+driver manager class has a method called register driver this is used to register the driver software.
+
+sun.jdbc.odbc.JdbcOdbcdriver driver = new sun.jdbc.odbc.JdbcOdbcdriver();
+DriverManager.registerDriver(driver);
+
+// Alternate
+
+Class.forName("sun.jdbc.odbc.JdbcOdbcdriver")
+
+Class.forName asks the JVM to load the given driverManager class.
+
+Class.forName method never creates an object for the driver class.
+
