@@ -1,3 +1,112 @@
 
 what is the need for JDBC?
 
+to store and manage data for a long time in (secondary memory).
+to perform insert, delete, update and retrieve data on either file or databases.
+
+standard steps of developing JDBC Application.
+
+1. load driver class & register with DriverManager Service.
+2. Establish connection with Database s/w.
+3. Create JDBC statement object.
+4. send & execute SQL queries in DB s/w using JDBC statement object.
+5. Gather results from DB s/w & process the Results.
+6. close connection object.
+
+
+Different ways of registering JDBC drivers with DriverManager Service.
+
+JDBC driver acts as a connecting bridge between Java Application and DataBase s/w.
+
+it is useful to convert java calls to Database calls and vice versa.
+
+Every JDBC driver s/w is identified by its driver class name create object for that driver clas and register the object with driverManager service. (This is nothing but register the driverManager with driver software service).
+
+How can we find out which class is Driver class?
+
+we can find out by seeing if the class is implementing                  ""java.sql.driver interface"".
+
+type 1 driver : sun.jdbc.odbc.JdbcOdbcDriver
+oracle thin driver : oracle.jdbc.driver.OracleDriver
+
+Multiple approaches to register driver class software with driverManager s/w.
+
+*) for Oracle thin Driver
+
+1. create object for driver class
+
+oracle.jdbc.driver.OracleDriver driver = new oracle.jdbc.driver.OracleDriver
+
+driverManager.register(driver);.
+
+there is a problem with this approach, bcoz it registers driver with driverManager service twice.
+
+JVM attempts to load jdbc.driver.OracleDriver class, when JVM attempts to load this class then static block will be executed and it has the code to create and register object with driverManager service and we are also explicitly registering the driverManager service so the driverManager service is being registered twice.
+
+
+2. oracle.jdbc.driver.OracleDriver driver = new oracle.jdbc.driver.OracleDriver();
+(or)
+new oracle.jdbc.driver.OracleDriver().
+
+if we try to anonymously create a object or create a named object (driver), we use the oracle.jdbc.driver.OracleDriver() class which has the static block and static block of code will be executed and object will be created only once and registered withe the driverManager service.
+
+
+it has a problem, because we are creating a object and not using it anywhere in the program.
+
+
+3. ConnTest.java
+
+public class ConnTest extends oracle jdbc.driver.OracleDriver {
+    public static void main(){
+        Connection con = new Connection(-, ,-);
+    }
+}
+
+OracleDriver is the super-class of ConnTest class, when we execute this code OracleDriver class will be extended through interface all the methods present in super-class will be extended also the static block of code will also be extended.
+
+limitations:
+
+Java does not support multiple inheritance through classes so we cannot inherit other classes when we inherit this OracleDriver class as parent class.
+
+
+4. using Class.forName()
+Class.forName("oracle.jdbc.driver.OracleDriver")
+
+how Class.forName() method works?
+when we implement java.sql.oracleDriver we will also implement the static block of code which is present inside the interface which has code to
+create an object for driver class &
+register the object with the driverManager s/w.
+
+// Code implementation.
+class jdbc_Application implements java.sql.oracleDriver{
+
+    static {
+        oracle.jdbc.driver.OracleDriver driver = new oracle.jdbc.driver.OracleDriver
+        driverManager.register(driver);
+    }
+}
+
+we can now inherit from other classes now.
+
+
+from JDBC 4 onwards which is given along with JDK 1.6  Auto-loading of driver class
+there is no need for writing Class.forName().
+
+then how does it register the driverManager with driver s/w.
+when we call driverManager.getConnection(here, driverManager will be loaded by JVM, here static block of the driverManager class executes.
+  here code is there to get the jar file from ojdbc6.jar and find the file in meta.inf folder
+  and pass the url, it will fetch the )
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+
+Example Java Application.
+
+1. Gather oracle oci driver details.
+2. Create project in eclipse and ojdbc8.jar file to bild path
+3. Develop the Application using Oracle oci driver.

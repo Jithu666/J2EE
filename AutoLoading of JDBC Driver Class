@@ -1,0 +1,33 @@
+
+    // AutoLoading of JDBC Driver Class?
+
+java.sql.Driver(META-INF/services of jar file)
+
+ojdbc6.jar : it is jar file representing oracle thin driver given by ORACLE Corporation.
+
+type2 drivers communicate with database s/w through vendorDB library.
+
+vendor libraries are capable of locating and communicating with remote or local database s/w.
+
+
+type4 drivers directly communicate with database s/w & no need of vendor db.
+
+vendor db is given by database providers, or we need to install it explicitly.
+
+
+Oracle Corporation released drivers for Java.
+
+    type2 jdbc driver for Oracle -> Oracle oci(oracle call interface) driver.
+    type4 jdbc driver for Oracle -> Oracle thin driver.
+
+
+Oracle oci driver
+
+driver class name : oracle.jdbc.driver.OracleDriver
+                  or
+                    oracle.jdbc.OracleDriver.
+
+url : jdbc:oracle:oci8:@<sid> sid: service id
+                        sid is nothing but database name.
+
+jar file
