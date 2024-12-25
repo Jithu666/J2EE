@@ -28,6 +28,6 @@ driver class name : oracle.jdbc.driver.OracleDriver
                     oracle.jdbc.OracleDriver.
 
 url : jdbc:oracle:oci8:@<sid> sid: service id
-                        sid is nothing but database name.
+                        sid is nothing but logical database name.
 
 jar file

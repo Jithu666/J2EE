@@ -4,3 +4,23 @@ Example Java Application.
 1. Gather oracle oci driver details.
 2. Create project in eclipse and ojdbc8.jar file to bild path
 3. Develop the Application using Oracle oci driver.
+
+
+working with Oracle thin jdbc driver
+
+
+every jdbc driver is identified by its driver class name.
+
+it is a class that implements java.sql.driver interface.
+
+jdbc url : jdbc:oracle:thin:@<host>:<port>:<sid>
+sid: service id.
+
+Oracle thin driver details
+
+driver class name : oracle.jdbc.driver.OracleDriver
+
+        or  oracle.jdbc.OracleDriver
+
+url : jdbc:oracle:thin:@<host>:<port no>:<sid>
+

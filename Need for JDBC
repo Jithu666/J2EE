@@ -96,17 +96,3 @@ then how does it register the driverManager with driver s/w.
 when we call driverManager.getConnection(here, driverManager will be loaded by JVM, here static block of the driverManager class executes.
   here code is there to get the jar file from ojdbc6.jar and find the file in meta.inf folder
   and pass the url, it will fetch the )
-
-
-
-
-
-
-
-
-
-
-
-
-
-

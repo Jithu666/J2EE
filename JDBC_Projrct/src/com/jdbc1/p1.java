@@ -1,4 +1,4 @@
-package com.jdbc;
+package com.jdbc1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Type2_Test {
+/**
+ * 
+ */
+public class p1 {
 
-	private static final String SALES_MARKETS_QUERY = "SELECT * FROM MARKETS";
+	private static final String SALES_MARKETS_QUERY = "SELECT * FROM CUSTOMERS";
 	
 	public static void main(String[] args) {
 		Connection con = null;
@@ -18,24 +21,24 @@ public class Type2_Test {
 		
 		String url = "jdbc:mysql://localhost:3306/sales";
 		String user = "root";
-		String password = "jiu";
+		String password = "jithu";
 
 
 		try {
 			// Register the driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// establish connection.
-			Connection con = DriverManager.getConnection(url, user, password);
+			con = DriverManager.getConnection(url, user, password);
 			// create statement object
-			if(st!=null)
+			if(con != null)
 				st = con.createStatement();
 			// send and execute sql query.
-			if(st!=null)
+			if(st != null)
 				rs = st.executeQuery(SALES_MARKETS_QUERY);
 			// process the resultset
-			if(rs!=null) {
+			if(rs != null) {
 				while(rs.next()) {
-					System.out.println(rs.getString(1)+ " " + rs.getString(2) + rs.getString(3));
+					System.out.println(rs.getString(1)+ " " + rs.getString(2));
 				} // while
 			} // if
 				
